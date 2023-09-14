@@ -5,8 +5,8 @@ metadata:
   name: restrt-polcy
 spec:
   containers:
-    name: httpd
-    image: apache:2
+    - name: httpd
+      image: apache:2
   restartPolicy: Never
 ---
 apiVersion: v1
@@ -15,6 +15,6 @@ metadata:
   name: rstrt-polcy
 spec:
   containers:
-    name: Raspberry-Pi
-    image: alpine:3
+    - name: raspberrypi
+      image: alpine:3
   restartPolicy: OnFailure
