@@ -5,16 +5,22 @@ metadata:
   name: restrt-polcy
 spec:
   containers:
-    - name: httpd
+    - name: restrt-never
       image: apache:2
+      command:
+        - "sleep"
+        - "2"
   restartPolicy: Never
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: rstrt-polcy
+  name: rstrt-nopolcy
 spec:
   containers:
     - name: raspberrypi
       image: alpine:3
+      command:
+        - "sleep"
+        - "2"
   restartPolicy: OnFailure
