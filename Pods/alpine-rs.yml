@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: CI/CD
+  labels:
+    app: jenkins
+    purpose: CI/CD
+spec:
+  minReadySeconds: 3
+  replicas: 2
+  selector:
+    matchLabels:
+      purpose: CI/CD
+  template:
+    metadata:
+      labels:
+        purpose: CI/CD
+    spec:
+      restartPolicy: Never
+      initContainers:
+        - name: alpine
+          image: alpine:3
+          command:
+           - "ping"
+           - "-c"
+           - "4"
+           - "google.com"
+      containers:
+        - name: jenkins
+          image: jenkins/jenkins:lts-jdk11
+          ports:
+            - containerPort: 8080
+              protocol: TCP
