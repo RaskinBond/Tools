@@ -27,7 +27,7 @@ spec:
   
       containers:
         - name: junk
-          image: jenkins:jdk11
+          image: jenkins/jenkins:jdk11
           ports: 
             - containerPort: 8080
               protocol: TCP
