@@ -7,12 +7,15 @@ spec:
   minReadySeconds: 3
   replicas: 5
   selector:
+    matchLabels:
       app: jenkins
       env: dev
   template:
     metadata: 
       name: alpine
-      labels: jenky
+      labels: 
+        app: jenkins
+        env: dev
     spec:
       initContainers:
         - name: alpine
