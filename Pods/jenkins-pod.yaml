@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: alpine-jenkins
+  label: jenky
+spec:
+  minReadySeconds: 3
+  replicas: 5
+  selector:
+    matchLabels:
+      app: jenkins
+      env: dev
+  template:
+    metadata: 
+      name: alpine
+    spec:
+      initContainers:
+        - name: alpine
+          image: alpine:3
+          command: 
+            - "ping"
+            - "-c"
+            - "4"
+            - "google.com"
+          restartPolicy: Never
+  
+      containers:
+        - name: junk
+          image: jenkins:jdk11
+          ports: 
+            - containerPort: 8080
+              protocol: TCP
+
