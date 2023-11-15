@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata: 
   name: alpine-jenkins
-  label: jenky
 spec:
   minReadySeconds: 3
   replicas: 5
