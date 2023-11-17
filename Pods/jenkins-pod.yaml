@@ -27,7 +27,6 @@ spec:
             - "-c"
             - "4"
             - "google.com"
-      restartPolicy: Never
   
       containers:
         - name: junk
