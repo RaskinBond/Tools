@@ -3,19 +3,21 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata: 
   name: alpine-jenkins
+  labels:
+    app: jenkins
+    env: test
 spec:
   minReadySeconds: 3
   replicas: 5
   selector:
     matchLabels:
       app: jenkins
-      env: dev
+      env: test
   template:
     metadata: 
       name: alpine
       labels: 
         app: jenkins
-        env: dev
     spec:
       initContainers:
         - name: alpine
