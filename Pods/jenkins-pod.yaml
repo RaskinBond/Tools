@@ -12,12 +12,12 @@ spec:
   selector:
     matchLabels:
       app: jenkins
-      env: test
   template:
     metadata: 
       name: alpine
       labels: 
         app: jenkins
+        env: test
     spec:
       initContainers:
         - name: alpine
